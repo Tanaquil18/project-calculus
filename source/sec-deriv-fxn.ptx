@@ -10,4 +10,70 @@
     </p>
   </introduction>
 
+  <subsection xml:id="sec-deriv-fxn-subsection-BC">
+    <title>Before Class <!-- - Hour 1 --></title>
+
+    <exploration xml:id="ex-deriv-fxn-name1">
+      <title>Graphing the Derivative of a Quadratic Function</title>
+      <p>
+        This graphical exploration walks students through how to use the slopes of the graph of a quadratic function to
+        graph the function's derivative, reinforcing the idea that the derivative is itself a function with inputs and outputs.   
+        <!-- A draft of the text and images for the animation/video can be found <url href="https://docs.google.com/document/d/1p_egMo87QQ1HR2pNyAiIv-ldE06jOlqWdbKHRgpZJrk/edit?usp=sharing">in this Google document</url>.   -->
+      </p>
+      <p>Learning objectives for this activity<fn>
+        <ul>
+          <li>
+            use the <em>slopes</em> of <m>f(x)</m> to identify the <em>heights, or values,</em> of <m>f'(x)</m>
+          </li>
+          <li>
+            find where the roots of <m>f'(x)</m> are by looking at a graph of <m>f(x)</m>
+          </li>
+          <li>
+            view the derivative as a function with inputs and outputs
+          </li>
+        </ul>
+      </fn>.
+      </p>
+         <interactive xml:id="doenet-interactive-exercise-deriv-fxn-name1" platform="doenetml" width="100%" aspect="2.1:5">
+          <slate surface="doenetml">
+            <xi:include href="./exercises/doenet/ex-deriv-fxn-name1.ptx" parse="text"/>
+          </slate>   
+        </interactive>  
+    </exploration>
+
+  <exploration xml:id="ex-deriv-fxn-name2">
+    <title>Graphing the Derivative of a More Complicated Function</title>
+    <p>
+      This graphical exploration leads students to identify key features of the graph of a function and see how those translate to the
+      graph of the function's derivative, reinforcing the idea that the derivative is itself a function with inputs and outputs.   
+      <!-- A draft of the text and images for the animation/video can be found <url href="https://docs.google.com/document/d/1p_egMo87QQ1HR2pNyAiIv-ldE06jOlqWdbKHRgpZJrk/edit?usp=sharing">in this Google document</url>.   -->
+    </p>
+    <p>Learning objectives for this activity<fn>
+      <ul>
+        <li>
+          use the <em>slopes</em> of <m>f(x)</m> to identify the sign of the <em>heights, or values,</em> of <m>f'(x)</m>
+        </li>
+        <li>
+          find where the roots of <m>f'(x)</m> are by looking at a graph of <m>f(x)</m>
+        </li>
+        <li>
+          view the derivative as a function with inputs and outputs
+        </li>
+      </ul>
+    </fn>.
+    </p>
+       <interactive xml:id="doenet-interactive-exercise-deriv-fxn-name2" platform="doenetml" width="100%" aspect="2.1:5">
+        <slate surface="doenetml">
+          <xi:include href="./exercises/doenet/ex-deriv-fxn-name2.ptx" parse="text"/>
+        </slate>   
+      </interactive>  
+  </exploration>
+
+</subsection>
+<subsection xml:id="sec-deriv-fxn-H1">
+  <title>During Class - Hour 1</title>
+  </subsection>
+  <subsection xml:id="sec-deriv-fxn-H2">
+    <title>During Class - Hour 2</title>
+    </subsection>
 </section>

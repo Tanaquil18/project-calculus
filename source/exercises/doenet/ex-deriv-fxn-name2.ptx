@@ -1,0 +1,343 @@
+<!-- Derivative of a Function as a Function, Graphical, Quartic Example -->
+
+<problem asList>
+  <title>The derivative graph of a more complicated function</title>
+  
+  <setup>
+  
+  <function name='f' variables='x' symbolic="false">-x**4/4-x**3/3+x**2</function>
+  <function name='fprime' variables='x' symbolic="false">-x**3-x**2+2*x</function>
+  
+  
+  <number name='x1'>-2</number>
+  <number name='x2'>0</number>
+  <number name='x3'>1</number>
+  <number name='dx'>1/8</number>
+  
+  
+  <module name='tangentPoint' newNamespace>
+  <setup>
+    <customAttribute componentType="math" attribute="sn" defaultValue="1" assignNames="sn" />
+    <customAttribute componentType="math" attribute="x" defaultValue="1" assignNames="x" />
+    <copy source='p' prop='x' assignNames="px"/>
+  </setup>
+  
+  <point name='p' stylenumber='$sn' x='$x' y='$$(../f)( $x )'>
+  <constraints>
+  <constrainToGrid dx='$(../dx)'/>
+  <constrainTo>$(../f)</constrainTo>
+  </constraints>
+  </point>
+  
+  <line name="tanline" stylenumber='$sn' through='$p' slope="$$(../fprime)($p.x)" />
+  
+  </module>
+  
+  </setup>
+  
+  
+  <exercise>
+  
+  <p>
+  The graph of a function <m>f(x)</m> is pictured below.  Drag the points to where the graph of <m>f</m> has a horizontal tangent line. 
+  </p>
+  
+  <graph size="medium" xmin='-3' xmax='3' ymin='-4' ymax='4' fixAxes grid name="graphf13">
+    <xlabel><m>x</m></xlabel>
+    <ylabel><m>f(x)</m></ylabel>
+    
+  <copy source="f" />
+  <copy assignNames='tan1a' source='tangentPoint' f='$f' sn='2' x='1.5' dx='$dx'/>
+  <copy assignNames='tan2a' source='tangentPoint' f='$f' sn='2' x='-2.5' dx='$dx'/>
+  <copy assignNames='tan3a' source='tangentPoint' f='$f' sn='2' x='-1' dx='$dx'/>
+  
+  <conditionalContent condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>2">
+    <point styleNumber="3" draggable="false">(-2,$$f(-2))</point>
+    </conditionalContent>
+  
+  <conditionalContent condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>4">
+    <point styleNumber="3" draggable="false">(0,$$f(0))</point>
+    </conditionalContent>
+  
+  <conditionalContent condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>6">
+    <point styleNumber="3" draggable="false">(1,$$f(1))</point>
+    </conditionalContent>
+  
+  
+  </graph>
+  
+  
+  <p>Points in correct locations for horizontal tangent lines: <answer name="horiztanpoints">
+  <award unorderedCompare matchPartial><when>
+  ($(tan1a/px), $(tan2a/px), $(tan3a/px)) = ($x1, $x2, $x3)
+  </when></award>
+  </answer>
+  </p>
+  
+  <feedback condition="$horiztanpoints.creditAchieved = 0 and $horiztanpoints.numSubmissions>1">
+    Horizontal means straight across, like ------------.
+    </feedback>
+  <feedback condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>2">
+    The first location is when <m>x=-2</m>
+    </feedback>
+    <feedback condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>4">
+    The second location is when <m>x=0</m>
+    </feedback>
+    <feedback condition="$horiztanpoints.creditAchieved != 1 and $horiztanpoints.numSubmissions>6">
+    The third location is when <m>x=1</m>
+    </feedback>
+  
+  
+  <p> 
+  Having a horizontal tangent line means that the value of the derivative <m>f'(a)</m> is equal to <mathInput name="mi1" minWidth="30"/>.
+  
+    <answer name="ans1">
+  <award name="aw1"><when>$mi1 = 0 </when></award>
+  </answer>
+  </p>
+    <feedback condition="$ans1.creditAchieved != 1 and $ans1.numSubmissions > 1 and $ans1.numSubmissions < 4">
+      Horizontal tangent means there is no rise, no change in y-value, as the x changes. 
+    </feedback>
+    <feedback condition="$ans1.creditAchieved != 1 and $ans1.numSubmissions > 3">
+      Horizontal tangent means there is no rise, no change in y-value, as the x changes. This means the slope is <m>0</m>, and the slope at <m>x=a</m> is the value of <m>f'(a)</m>.
+    </feedback>
+      
+  
+  
+  
+  <conditionalContent>
+    <case condition="$aw1.creditAchieved != 1">
+      <p>
+        You still need to get the value of the derivative correct.
+      </p>
+    </case>
+    <case condition="$aw1.creditAchieved = 1">
+      <p>
+        Since there are three locations on the graph with horizontal tangent lines, meaning that the slope of <m>f</m> is <m>0</m> at those three locations, there are three values <m>a</m> such that <m>f'(a)=0</m>.
+      </p>
+      <p>
+        <m>f'(</m><mathinput name='mi2' minWidth="30"/><m>)=</m><mathinput disabled minWidth="30">$mi1</mathinput></p>
+      <p>
+      <m>f'(</m><mathinput name='mi3' minWidth="30"/><m>)=</m><mathinput disabled minWidth="30">$mi1</mathinput></p>
+      <p>
+      <m>f'(</m><mathinput name='mi4' minWidth="30"/><m>)=</m><mathinput disabled minWidth="30">$mi1</mathinput></p>
+    
+  <answer name="ans2">
+  <award name="aw2" unorderedCompare matchPartial><when>
+  ($mi2, $mi3, $mi4) = ($x1, $x2, $x3)
+  </when></award>
+  </answer>
+  
+      <feedback condition="$ans2.numSubmissions > 1 and $ans2.numSubmissions < 6 and $aw2.creditAchieved != 1">
+        These are the same x-values where <m>f</m> has a horizontal tangent line.
+      </feedback>
+      <feedback condition="$ans2.numSubmissions > 5 and $aw2.creditAchieved != 1">
+        The x-values where <m>f</m> has a horizontal tangent line, so that the derivative <m>f'</m> equals zero, are <m>-2</m>, <m>0</m>, and <m>1</m>.
+      </feedback>
+  </case>
+  
+  </conditionalContent>
+  
+  
+  </exercise>
+  
+  <exercise>
+    <conditionalContent>
+      <case condition="$aw2.creditAchieved != 1">
+        <p> You still need to get the locations correct.</p>
+      </case>
+      <case condition="$aw2.creditAchieved = 1">
+    <p>
+      The graph of <m>f</m> appears on the left below, along with the start of a graph of <m>f'</m>. 
+    </p>
+        <p>
+          We know that the graph of <m>f'</m> goes through the point <m>(-2,0)</m> because <m>f'(-2)=0</m>. 
+        </p>
+        <p>
+            Similarly for <m>(0,0)</m> and <m>(1,0)</m>, because the value of the derivative is <m>0</m> at <m>x=0</m> and <m>x=1</m>, because the tangent line to <m>f</m> is horizontal at those locations.
+    </p>
+          <sideBySide>
+  <graph size="large" aspectRatio="1" xmin='-3' xmax='3' ymin='-4' ymax='4' fixAxes grid name="graphf2">
+    <xlabel><m>x</m></xlabel>
+    <ylabel><m>f(x)</m></ylabel>
+    <copy source="f" />
+    <copy assignNames='tan2' source='tangentPoint' f='$f' sn='2' x='-1' dx='$dx'/>
+  
+  <text anchor="(1.5,3.5)">
+      x-value:
+    </text>
+    <math anchor="(2.3,3.5)">$(tan2/px)</math>
+    <text anchor="(1.5,2.75)">
+      slope:
+    </text>
+        <math anchor="(2.3,2.75)">$$fprime($(tan2/px))</math>
+  </graph>
+  <graph size="medium" xmin='-3' xmax='3' ymin='-4' ymax='4' fixAxes grid name="graphfprime2">
+    <xlabel><m>x</m></xlabel>
+    <ylabel><m>f'(x)</m></ylabel>
+  
+  <point stylenumber='2' name='derivPoint1a' x='-2' y='0' draggable="false"><label>$derivPoint1a.coords</label>
+  </point>
+  <point stylenumber='2' name='derivPoint2a' x='0' y='0' draggable="false"><label>$derivPoint2a.coords</label></point>
+  <point stylenumber='2' name='derivPoint3a' x='1' y='0'draggable="false"><label>$derivPoint3a.coords</label></point>
+    
+  <conditionalContent condition="$beforehoriz1.creditAchieved=1">
+    <rectangle center="(-2.5,2)" width="1" height="4" styleNumber="6" draggable="false" filled/>
+  </conditionalContent>
+  
+  <conditionalContent condition="$afterhoriz1.creditAchieved=1">
+    <rectangle center="(-1,-2)" width="2" height="4" styleNumber="6" draggable="false" filled />
+  </conditionalContent>
+  
+    <conditionalContent condition="$afterhoriz2.creditAchieved=1">
+    <rectangle center="(0.5,2)" width="1" height="4" styleNumber="6" draggable="false" filled/>
+  </conditionalContent>
+  
+    <conditionalContent condition="$afterhoriz3.creditAchieved=1">
+    <rectangle center="(2,-2)" width="2" height="4" styleNumber="6" draggable="false" filled/>
+  </conditionalContent>
+  
+    
+  </graph>
+  
+  </sideBySide>
+    <p>
+      Before <m>x=-2</m>, the slopes of <m>f</m> are <answer name="beforehoriz1"><choiceInput inline>
+          <choice>negative</choice>
+          <choice credit="1">positive</choice>
+          <choice>0</choice>
+             </choiceInput></answer>
+    </p>
+        <conditionalContent condition="$beforehoriz1.creditAchieved=1">
+          <p>This means the values of the derivative are positive and must lie above the x-axis on the graph of <m>f'(x)</m>.
+          </p>
+        </conditionalContent>
+    <p>
+      Between <m>x=-2</m> and <m>x=0</m>, the slopes of <m>f</m> are <answer name="afterhoriz1"><choiceInput inline>
+          <choice credit="1">negative</choice>
+          <choice>positive</choice>
+          <choice>0</choice>
+             </choiceInput></answer>
+    </p>
+      <conditionalContent condition="$afterhoriz1.creditAchieved=1">
+          <p>
+            This means the values of the derivative are negative and must lie below the x-axis on the graph of <m>f'(x)</m>.
+          </p>
+        </conditionalContent>
+        <p>
+      Between <m>x=0</m> and <m>x=1</m>, the slopes of <m>f</m> are <answer name="afterhoriz2"><choiceInput inline>
+          <choice>negative</choice>
+          <choice credit="1">positive</choice>
+          <choice>0</choice>
+             </choiceInput></answer>
+    </p>
+        <p>
+      After <m>x=1</m>, the slopes of <m>f</m> are <answer name="afterhoriz3"><choiceInput inline>
+          <choice credit="1">negative</choice>
+          <choice>positive</choice>
+          <choice>0</choice>
+             </choiceInput></answer>
+    </p>
+  
+  
+      </case>
+    </conditionalContent>
+  </exercise>
+  
+  
+   <exercise> 
+  <conditionalContent>
+      <else >
+        <p> You still need to get the signs of the slopes correct.</p>
+      </else>
+      <case condition="$beforehoriz1.creditAchieved = 1 and $afterhoriz1.creditAchieved = 1 and $afterhoriz2.creditAchieved = 1 and $afterhoriz3.creditAchieved = 1">
+  <setup>
+  
+    <graph name="graph1"  displayYAxisTickLabels="false" showNavigation="false" xmin="-3" xmax="3" >
+      <function domain="[-3,-1.5]"> -4*(x+2) </function>
+      <function domain="[-1.5,-1]"> 4*(x+1) </function>
+      <function domain="[-1,-0.5]"> -4*(x+1) </function>
+      <function domain="[-0.5,0.5]"> 4*x </function>
+      <function domain="[0.5,3]"> -4*(x-1) </function>
+  
+      <conditionalContent condition="$fprimeans = A and $fprimeans.justSubmitted">
+    <point draggable="false" styleNumber="2">(-2,0)</point>
+    <point draggable="false" styleNumber="2">(-1,0)</point>
+    <point draggable="false" styleNumber="2">(0,0)</point>
+    <point draggable="false" styleNumber="2">(1,0)</point>
+    
+  </conditionalContent>
+    </graph>
+  
+   
+    <graph name="graph2" displayXAxisTickLabels="true" displayYAxisTickLabels="true" showNavigation="false" xmin="-3" xmax="3" >
+      <function> -1*$fprime </function> 
+  
+      <conditionalContent condition="$fprimeans = B and $fprimeans.justSubmitted">
+    <rectangle center="(-2.5,5)" width="1" height="10" styleNumber="6" filled/>
+    <rectangle center="(-1,-5)" width="2" height="10" styleNumber="6" filled />
+    <rectangle center="(0.5,5)" width="1" height="10" styleNumber="6" filled/>
+    <rectangle center="(2,-5)" width="2" height="10" styleNumber="6" filled/>
+  <point draggable="false" styleNumber="2">(-2,0)</point>
+    <point draggable="false" styleNumber="2">(0,0)</point>
+    <point draggable="false" styleNumber="2">(1,0)</point>
+      </conditionalContent>
+      
+    </graph>
+  
+    <graph name="graph3" displayXAxisTickLabels="true" displayYAxisTickLabels="true" showNavigation="false" xmin="-3" xmax="3" >
+      <function> $fprime </function> 
+      
+    <conditionalContent condition="$fprimeans = C and $fprimeans.justSubmitted">
+    <rectangle center="(-2.5,5)" width="1" height="10" styleNumber="6" filled/>
+    <rectangle center="(-1,-5)" width="2" height="10" styleNumber="6" filled />
+    <rectangle center="(0.5,5)" width="1" height="10" styleNumber="6" filled/>
+    <rectangle center="(2,-5)" width="2" height="10" styleNumber="6" filled/>
+  <point draggable="false" styleNumber="2">(-2,0)</point>
+    <point draggable="false" styleNumber="2">(0,0)</point>
+    <point draggable="false" styleNumber="2">(1,0)</point>
+    
+    </conditionalContent>
+    </graph>
+  </setup>
+  <p> 
+    Which of the following graphs could be the graph of <m>f'(x)</m>?
+  </p>
+     <sideBySide>
+     <figure suppressFigureNameInCaption>$graph1 <caption>A</caption></figure>
+     <figure suppressFigureNameInCaption>$graph2<caption>B</caption></figure>
+        <figure suppressFigureNameInCaption>$graph3<caption>C</caption></figure>
+  </sideBySide>
+    <p>
+      <m>f'(x)</m> could be graph <answer name="fprimeans">C</answer>
+    </p>
+     <feedback condition="$fprimeans = A and $fprimeans.justSubmitted">
+              Graph A touches the x-axis four times, but <m>f'(x)=0</m> exactly three times, at <m>x=-2</m>, <m>x=0</m>, and <m>x=1</m>, not also at <m>x=-1</m>. 
+            </feedback>
+     <feedback condition="$fprimeans = B and $fprimeans.justSubmitted">
+              Graph B touches the x-axis in the correct locations, at <m>x=-2</m>, <m>x=0</m>, and <m>x=1</m>, but the y-values are not positive when the slope of <m>f</m> is positive.  
+            </feedback>
+     <feedback condition="$fprimeans = C and $fprimeans.justSubmitted">
+              Graph C touches the x-axis in the correct locations, at <m>x=-2</m>, <m>x=0</m>, and <m>x=1</m>; the y-values are positive when the slope of <m>f</m> is positive; and the y-values are negative when the slope of <m>f</m> is negative.
+            </feedback>
+  
+      </case>
+  </conditionalContent>
+  </exercise>
+  
+  <exercise>
+    <conditionalContent>
+      <case condition="$fprimeans.creditAchieved != 1">
+        <p> You still need to choose the correct graph.</p>
+      </case>
+      <case condition="$fprimeans.creditAchieved = 1">
+        <p>
+          Throughout this activity, what have you observed or concluded about the graph of a function and the function's derivative?  You should make sure to use the words: tangent, horizontal, slope, height, positive, negative, zero.  In addition, you might want to write what you still wonder about.  
+        </p>
+        <textInput name="studentthoughts" expanded/>
+      </case>
+    </conditionalContent>
+  </exercise>
+  
+  
+  </problem>

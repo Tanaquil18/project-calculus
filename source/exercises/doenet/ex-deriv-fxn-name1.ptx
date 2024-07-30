@@ -1,0 +1,393 @@
+<!-- Derivative of a Function as a Function, Graphical, Quadratic Example -->
+<!-- Remixed from Duane Nykamp's Gaussian example -->
+
+<problem asList>
+    <title>Sketch the derivative of a quadratic function, step-by-step</title>
+    
+    <setup>
+    
+    <math fixed name='sqrt2' >sqrt(2)</math>
+    <function name='f' variables='x' symbolic="false">x-x**2</function>
+    <function name='fprime' variables='x' symbolic="false">1-2*x</function>
+    
+    <function name='tan_0' variables='x' symbolic="false">$$f(0)+$$fprime(0)*(x)</function>
+    <function name='tan_n1' variables='x' symbolic="false">$$f(-1)+$$fprime(-1)*(x+1)</function>
+    <function name='tan_1' variables='x' symbolic="false">$$f(1)+$$fprime(1)*(x-1)</function>
+    <function name='tan_half' variables='x' symbolic="false">$$f(0.5 )+$$fprime(0.5 )*(x-0.5 )</function>
+    <function name='tan_2' variables='x' symbolic="false">$$f(2 )+$$fprime(2 )*(x-2 )</function>
+    
+    <number name='fprime_nsqrt2'>$$fprime(0 )</number>
+    <number name='fprime_nsqrt2_over_2'>$fprime_nsqrt2/2</number>
+    
+    <number name='x1'>0.5</number>
+    <number name='x2'>-1</number>
+    <number name='x3'>-0.5</number>
+    <number name='x4'>0 </number>
+    <number name='x5'>1</number>
+    <number name='x6'>1.5 </number>
+    <number name='x7'>2 </number>
+    <number name='dx'>1/2</number>
+    
+    
+    <module name='tangentPoint' newNamespace>
+    <setup>
+      <customAttribute componentType="math" attribute="sn" defaultValue="1" assignNames="sn" />
+      <customAttribute componentType="math" attribute="x" defaultValue="1" assignNames="x" />
+      <copy source='p' prop='x' assignNames="px"/>
+    </setup>
+    
+    <point name='p' stylenumber='$sn' x='$x' y='$$(../f)( $x )'>
+    <point name="max" hide>(0.5,$$f(0.5))</point>
+    <constraints>
+    <!-- <attractTo> $max </attractTo> -->
+      <attractToGrid dx='$(../dx)' />
+    <constrainTo>$(../f)</constrainTo>
+    </constraints>
+    </point>
+    
+    <line stylenumber='$sn' through='$p' slope="$$(../fprime)($p.x)" />
+    </module>
+    
+    
+    </setup>
+    
+    
+    <exercise>
+    <p>The graph of a function <m>f(x)</m> is shown below.  Drag the point along the curve and observe what happens to the slope.  
+      
+    </p>
+    
+    <sideBySide>
+    <graph size="medium" xmin='-2' xmax='3' ymin='-4' ymax='2.1' fixAxes grid name="graphf1">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f(x)</m></ylabel>
+      
+    
+    <copy source="f" />
+    <copy assignNames='tan1' source='tangentPoint' f='$f' sn='2' x='1.5' dx='$dx'/>
+    
+    <text anchor="(1.5,1.75)">
+        x-value:
+      </text>
+      <math anchor="(2.2,1.75)">$(tan1/px)</math>
+      <text anchor="(1.5,1.25)">
+        slope:
+      </text>
+          <math anchor="(2.2,1.25)">$$fprime($(tan1/px))</math>
+    
+    </graph>
+    <graph size="medium" xmin='-2' xmax='3' ymin='-4' ymax='4.1' fixAxes grid name="graphfprime1">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f'(x)</m></ylabel>
+      
+    <point draggable="false" stylenumber='2' name='derivPoint1' x='$(tan1/px)' y='$$fprime($(tan1/px))'>
+    </point>
+    
+      <text anchor="(1.5,3.5)">
+        x-value:
+      </text>
+      <math anchor="(2.2,3.5)">$(tan1/px)</math>
+      <text anchor="(1.5,2.75)">
+        y-value:
+      </text>
+          <math anchor="(2.2,2.75)">$$fprime($(tan1/px))</math>
+      
+    </graph>
+    
+    </sideBySide>
+    
+    <p>
+    Drag the point to where the graph of <m>f</m> has a horizontal tangent line (there is only one such point). 
+    <answer>
+    <award><when>$(tan1/px) = 0.5</when></award>
+    </answer>
+    
+    
+    </p>
+    
+    
+    <p>
+    
+    What is the value of the derivative of <m>f</m> at this point?
+    </p>
+      <p>
+    <m>f'(</m><mathinput name='mi1' minWidth="30"/><m>)=</m><mathinput name='mi2' minWidth="30"/>
+    
+    <answer>
+    <award matchPartial><when>$mi1 = 0.5 and $mi2 = 0</when></award>
+    </answer>
+    
+    </p>
+    </exercise>
+    
+    <exercise>
+      <p>
+        Look at the graph of <m>f</m>. 
+      </p>
+      <p>
+        Before <m>x=</m><mathInput disabled>$mi1</mathInput>, the slopes are <answer name="beforehoriz"><choiceInput inline>
+            <choice>negative</choice>
+            <choice credit="1">positive</choice>
+            <choice>0</choice>
+               </choiceInput></answer>
+      </p>
+      <p>
+        After <m>x=</m><mathInput disabled>$mi1</mathInput>, the slopes are <answer name="afterhoriz"><choiceInput inline>
+            <choice credit="1">negative</choice>
+            <choice>positive</choice>
+            <choice>0</choice>
+               </choiceInput></answer>
+      </p>
+    </exercise>
+    
+    <!--     click in the correct quadrant? -->
+     <exercise> 
+    <p> 
+      Use the graph of <m>f</m> to find the value of the derivative at <m>x=1</m>.
+    </p>
+      <p>
+        <m>f'(1)=</m><answer name="fprimeat1ans">
+    <award >$$fprime(1)</award>
+    </answer>
+      </p>
+    
+    <sideBySide>
+    <graph size="large" aspectRatio="1" xmin='-2' xmax='3' ymin='-4' ymax='2.1' fixAxes grid name="graphf2">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f(x)</m></ylabel>
+      <copy source="f" />
+      <copy assignNames='tan2' source='tangentPoint' f='$f' sn='2' x='-1' dx='$dx'/>
+    
+    <text anchor="(1.5,1.75)">
+        x-value:
+      </text>
+      <math anchor="(2.2,1.75)">$(tan2/px)</math>
+    <!--   <textInput anchor="(2.2,1.5)" name="ti" width="20px"/> -->
+    <!--   <point styleNumber="2">($ti,$$f($ti))</point> -->
+      <text anchor="(1.5,1.25)">
+        slope:
+      </text>
+          <math anchor="(2.2,1.25)">$$fprime($(tan2/px))</math>
+    </graph>
+    <graph size="medium" xmin='-2' xmax='3' ymin='-4' ymax='4.1' fixAxes grid name="graphfprime2">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f'(x)</m></ylabel>
+      
+    <point stylenumber='2' name='derivPointa' x='$x5' y='-2'>
+      <constraints>
+        <constrainToGrid dx='1' dy='$fprime_nsqrt2_over_2'/>
+        <constrainTo><line>x=$x5</line></constrainTo>
+        <constrainToGraph buffer="0" />
+      </constraints>
+    </point>
+    
+    
+      <text anchor="(1.5,3.5)">
+        x-value:
+      </text>
+      <math anchor="(2.2,3.5)">$derivPointa.x</math>
+    <!--   <textInput anchor="(2.2,1.5)" name="ti" width="20px"/> -->
+    <!--   <point styleNumber="2">($ti,$$f($ti))</point> -->
+      <text anchor="(1.5,2.75)">
+        y-value:
+      </text>
+          <math anchor="(2.2,2.75)">$derivPointa.y</math>
+      
+    </graph>
+    
+    </sideBySide>
+     <conditionalContent>
+      <case condition="$fprimeat1ans.creditAchieved = 1">
+        <p>Now drag the point on the derivative graph so that its y-value is the value of <m>f'(1)</m>, that is, so that its y-value is <m>-1</m>.</p>
+      </case>
+      <case condition="$fprimeat1ans.creditAchieved != 1">
+        <p>
+        Now drag the point on the derivative graph so that its y-value is the value of <m>f'(1)</m>.
+      </p>
+      </case>
+    </conditionalContent> 
+       
+      <p>Point is in correct location: 
+    <answer>
+    <award><when>$derivPointa.y = $$fprime($x5)</when></award>
+    </answer>
+    </p>
+    
+    </exercise>
+    
+      <exercise>
+        <p>
+          Do the same for all the points: drag each one so that its y-value is the value of the derivative of <m>f</m> at that respective x-value.
+        </p>
+    <sideBySide>
+    <graph size="large" aspectRatio="1" xmin='-2' xmax='3' ymin='-4' ymax='2.1' fixAxes grid name="graphf3">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f(x)</m></ylabel>
+      <copy source="f" />
+      <copy assignNames='tan3' source='tangentPoint' f='$f' sn='2' x='-1' dx='$dx'/>
+    
+    <text anchor="(1.5,1.75)">
+        x-value:
+      </text>
+      <math anchor="(2.2,1.75)">$(tan3/px)</math>
+    <!--   <textInput anchor="(2.2,1.5)" name="ti" width="20px"/> -->
+    <!--   <point styleNumber="2">($ti,$$f($ti))</point> -->
+      <text anchor="(1.5,1.25)">
+        slope:
+      </text>
+          <math anchor="(2.2,1.25)">$$fprime($(tan3/px))</math>
+    </graph>
+    <graph size="medium" xmin='-2' xmax='3' ymin='-4' ymax='4.1' fixAxes grid name="graphfprime3">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f'(x)</m></ylabel>
+      
+            <point name = "A" styleNumber="2" > (-1,0)
+                  <constraints>
+                    <constrainToGrid dx="1/2" dy="0.5"/>
+                    <constrainTo><line>x=-1</line></constrainTo>
+                  </constraints>
+                </point>
+            <point name = "B" styleNumber="2"> (-0.5,0)
+                  <constraints>
+                    <constrainToGrid  dx="1/2" dy="0.5"/>
+                    <constrainTo><line>x=-0.5</line></constrainTo>
+                  </constraints>
+                </point>
+                <point name = "C" styleNumber="2"> (0,0)
+                  <constraints>
+                    <constrainTo><line>x=0</line></constrainTo>
+                    <constrainToGrid  dx="1/2" dy="0.5"/>
+                  </constraints>
+                </point>
+                <point name = "D" styleNumber="2"> (0.5,0)
+                  <constraints>
+                    <constrainTo><line>x=0.5</line></constrainTo>
+                    <constrainToGrid  dx="1/2" dy="0.5"/>
+                  </constraints>
+                </point>
+                <point name = "E" styleNumber="2"> (1,0)
+                  <constraints>
+                    <constrainTo><line>x=1</line></constrainTo>
+                    <constrainToGrid dx="0.5" dy="0.5"/>
+                  </constraints>
+                </point>
+                <point name = "F" styleNumber="2"> (1.5,0)
+                  <constraints>
+                    <constrainTo><line>x=1.5</line></constrainTo>
+                    <constrainToGrid dx="0.5" dy="0.5"/>
+                  </constraints>
+                </point>
+      <point name = "G" styleNumber="2"> (2,0)
+                  <constraints>
+                    <constrainTo><line>x=2</line></constrainTo>
+                    <constrainToGrid dy="0.5"/>
+                  </constraints>
+                </point>
+    
+                  <curve name="s" styleNumber="2" through="$A $B $C $D $E $F $G" extrapolateBackward extrapolateForward/>
+              </graph>
+    </sideBySide>
+              <answer name="ans"> 
+                <award>
+                  <when> $$fprime($A.x) = $A.y and $$fprime($B.x) = $B.y  and $$fprime($C.x)=$C.y and $$fprime($D.x)=$D.y and $$fprime($E.x)=$E.y and $$fprime($F.x)=$F.y and $$fprime($G.x)=$G.y
+                  </when>
+                </award>
+              </answer>
+              <feedback condition="$$fprime($A.x) != $A.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$A.x</m> is incorrect.    
+              </feedback>
+              <feedback condition="$$fprime($B.x) != $B.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$B.x</m> is incorrect.    
+              </feedback>
+              <feedback condition="$$fprime($C.x) != $C.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$C.x</m> is incorrect.    
+              </feedback>
+              <feedback condition="$$fprime($D.x) != $D.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$D.x</m> is incorrect.    
+              </feedback>
+              <feedback condition="$$fprime($E.x) != $E.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$E.x</m> is incorrect.    
+              </feedback>
+              <feedback condition="$$fprime($F.x) != $F.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$F.x</m> is incorrect.    
+              </feedback>
+      <feedback condition="$$fprime($G.x) != $G.y and $ans.justSubmitted">
+                The height of the point whose x-coordinate is <m>$G.x</m> is incorrect.    
+              </feedback>
+    
+    
+    <!-- <p>Point is in correct location: 
+    <answer>
+    <award><when>$derivPoints.y = $$fprime($(tan1/px))</when></award>
+    </answer>
+    </p> -->
+    
+    
+    
+    <!-- <sideBySide>
+    <graph size="large" aspectRatio="1" xmin='-2' xmax='3' ymin='-4' ymax='2.1' fixAxes grid name="g3a">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f(x)</m></ylabel>
+      
+    
+    <copy source="g1" />
+    
+    </graph>
+    <graph size="medium" xmin='-2' xmax='3' ymin='-4' ymax='4.1' fixAxes grid name="g17">
+      <xlabel><m>x</m></xlabel>
+      <ylabel><m>f'(x)</m></ylabel>
+      
+    <point stylenumber='2' name='derivPoints' x='$(tan1/px)' y='-2'>
+      <constraints>
+        <constrainToGrid dx='1' dy='$fprime_nsqrt2_over_2'/>
+        <constrainTo><line>x=$(tan1/px)</line></constrainTo>
+        <constrainToGraph buffer="0" />
+      </constraints>
+    </point>
+    
+    
+      <text anchor="(1.5,3.5)">
+        x-value:
+      </text>
+      <math anchor="(2.2,3.5)">$derivPoints.x</math>
+    <!--   <textInput anchor="(2.2,1.5)" name="ti" width="20px"/> -->
+    <!--   <point styleNumber="2">($ti,$$f($ti))</point> -->
+    <!--   <text anchor="(1.5,2.75)">
+        y-value:
+      </text>
+          <math anchor="(2.2,2.75)">$derivPoints.y</math>
+      
+    
+    </graph>
+    <p>Point is in correct location: 
+    <answer>
+    <award><when>$derivPoints.y = $$fprime($(tan1/px))</when></award>
+    </answer>
+    </p>
+    
+    </sideBySide> -->
+    
+      </exercise>
+    
+      <exercise>
+      <p>
+        Look at the graph of <m>f'</m>. 
+      </p>
+      <p>
+        Before <m>x=</m><mathInput disabled>$mi1</mathInput>, the values of <m>f'</m> are <answer name="beforerootfprime"><choiceInput inline>
+            <choice>negative</choice>
+            <choice credit="1">positive</choice>
+            <choice>0</choice>
+               </choiceInput></answer>
+      </p>
+      <p>
+        After <m>x=</m><mathInput disabled>$mi1</mathInput>, the values of <m>f'</m> are <answer name="afterrootfprime"><choiceInput inline>
+            <choice credit="1">negative</choice>
+            <choice>positive</choice>
+            <choice>0</choice>
+               </choiceInput></answer>
+      </p>
+    
+      </exercise>
+    
+    </problem>
